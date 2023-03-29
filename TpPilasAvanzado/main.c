@@ -32,7 +32,7 @@ int main()
     printf(" ||<< /        /$\              // ____ \\                          \ >>|| \n");
     printf(" ||>>|        //E\\            // ///..) \\              2023       |<<|| \n");
     printf(" ||<<|        \\A//           || <||  >\  ||                        |>>|| \n");
-    printf(" ||>>|         \$/            ||  $$ --/  ||            EL JOTA    |<<|| \n");
+    printf(" ||>>|         \$/            ||  $$ -/  ||            EL JOTA     |<<|| \n");
     printf(" ||<<|       TP PILAS         *\\  |\_/  //*                        |>>|| \n");
     printf(" ||>>|                         *\\/___\_//*                         |<<|| \n");
     printf(" ||<<\       AVANZADO     _____/ J PERALES \________    DOBLE T     />>|| \n");
@@ -181,10 +181,11 @@ int main()
             {
                 apilar(&aux1, desapilar(&dada));
             }
-            else
+            if(tope(&a) < tope(&dada))
             {
                 apilar(&aux1, desapilar(&a));
             }
+
         }
 
         while(!pilavacia(&aux1))
@@ -193,6 +194,9 @@ int main()
         }
 
         mostrar(&dada);
+        mostrar(&aux1);
+        mostrar(&a);
+
 
         break;
 
