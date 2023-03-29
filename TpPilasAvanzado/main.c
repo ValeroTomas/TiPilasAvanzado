@@ -187,7 +187,8 @@ int main()
             }
         }
 
-        while(!pilavacia(&aux1)){
+        while(!pilavacia(&aux1))
+        {
             apilar(&dada, desapilar(&aux1));
         }
 
@@ -196,6 +197,50 @@ int main()
         break;
 
     case 6:
+        //Usando lo resuelto en el ejercicio 4, pasar los elementos de una pila a otra de forma tal que la
+        //segunda pila quede ordenada de mayor (tope) a menor (base). Esto se llama método de
+        //ordenación por selección.
+        printf("INGRESE VALORES\n");
+        do
+        {
+            leer(&dada);
+            printf("\nINGRESE ""s"" PARA SEGUIR CARGANDO VALORES\n");
+            fflush(stdin);
+            scanf ("%c", &opc);
+        }
+        while(opc == 's');
+        printf("\nPILA DADA:\n");
+        mostrar(&dada);
+
+        do
+        {
+            if(!pilavacia(&aux2))
+            {
+                while(!pilavacia(&aux2))
+                {
+                    apilar(&dada,desapilar(&aux2));
+                }
+            }
+
+            apilar(&aux1, desapilar(&dada));
+
+            while(!pilavacia(&dada))
+            {
+                if(tope(&dada)<tope(&aux1))
+                {
+                    apilar(&aux2, desapilar(&aux1));
+                    apilar(&aux1, desapilar(&dada));
+                }
+                else
+                {
+                    apilar(&aux2, desapilar(&dada));
+                }
+            }
+        }
+        while(!pilavacia(&aux2));
+
+        mostrar(&aux1);
+
 
         break;
 
