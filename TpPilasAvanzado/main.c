@@ -42,6 +42,7 @@ int main()
 
     switch(punto)
     {
+    //EJERCICIO 1 *COMPLETO*
     case 1:
         //Sumar los elementos de una pila (usar variables enteras)
         var=0;
@@ -66,6 +67,7 @@ int main()
         printf("\nLa suma es: %i",var);
         break;
 
+    //EJERCICIO 2 *COMPLETO*
     case 2:
         //Contar los elementos de una pila (usar variables enteras)
         var=0;
@@ -88,6 +90,7 @@ int main()
         printf("\nLa pila tiene: %i elementos.",var);
         break;
 
+    //EJERCICIO 3 *COMPLETO*
     case 3:
         //Calcular el promedio de los valores de una pila (usar variables)
         var=0;
@@ -115,6 +118,7 @@ int main()
 
         break;
 
+    //EJERCICIO 4 *COMPLETO*
     case 4:
         //Encontrar el menor elemento de una pila y guardarlo en otra. (sin variables enteras, solo pilas)
         printf("INGRESE VALORES\n");
@@ -148,8 +152,10 @@ int main()
         mostrar (&a);
         break;
 
+    //EJERCICIO 5 *COMPLETO*
     case 5:
-        //Insertar un elemento en una pila ordenada de menor (tope) a mayor (base) de forma tal que se conserve el orden. (sin variables enteras, solo pilas)
+        //Insertar un elemento en una pila ordenada de menor (tope) a mayor (base) de forma tal que se conserve el orden.
+        //(sin variables enteras, solo pilas)
         apilar (&dada, 9);
         apilar (&dada, 8);
         apilar (&dada, 6);
@@ -188,6 +194,7 @@ int main()
 
         break;
 
+    //EJERCICIO 6 *COMPLETO*
     case 6:
         //Usando lo resuelto en el ejercicio 4, pasar los elementos de una pila a otra de forma tal que la
         //segunda pila quede ordenada de mayor (tope) a menor (base). Esto se llama método de
@@ -236,6 +243,7 @@ int main()
 
         break;
 
+    //EJERCICIO 7 *COMPLETO*
     case 7:
         //Determinar si un elemento buscado está dentro de una pila. Al encontrarlo, finalizar la búsqueda.
 
@@ -271,6 +279,7 @@ int main()
 
         break;
 
+    //EJERCICIO 8 *COMPLETO*
     case 8:
         //Eliminar un elemento de una pila. El eliminarlo, finalizar el recorrido y dejar el resto en el mismo orden.
         apilar (&dada, 9);
@@ -293,19 +302,23 @@ int main()
         while(!pilavacia(&dada))
         {
             apilar(&aux1, desapilar(&dada));
-            if(tope(&dada)==tope(&a)){
+            if(tope(&dada)==tope(&a))
+            {
                 apilar(&aux2, desapilar(&dada));
                 flag = 1;
             }
         }
-        while(!pilavacia(&aux1)){
+        while(!pilavacia(&aux1))
+        {
             apilar(&dada, desapilar(&aux1));
         }
 
-        if (flag==1){
+        if (flag==1)
+        {
             printf("\n\nTu valor estaba en la pila\n");
         }
-        else{
+        else
+        {
             printf("\n\nTu valor NO estaba en la pila");
         }
         printf("\n\nPILA FINAL");
@@ -313,6 +326,7 @@ int main()
 
         break;
 
+    //EJERCICIO 9 *COMPLETO*
     case 9:
         //NO ENTRAR FUNCIONA JOYA POR FAVOR NO TOCAR *************
         //CICLO DE CARGA
@@ -363,21 +377,119 @@ int main()
 
         break;
 
+    //EJERCICIO 10 *FALTA*
     case 10:
         //Dadas dos pilas A y B que simulan conjuntos (cada conjunto no tiene elementos repetidos
         //sobre sí mismo), realizar un programa que calcule en la pila C la operación de unión.
 
         break;
 
+    //EJERCICIO 11 *COMPLETO*
     case 11:
         //Intercalar dos pilas ordenadas en forma creciente (ORDENADA1 y ORDENADA2) dejando
         //el resultado en una pila también ordenada en forma creciente (ORDENADAFINAL).
+        apilar(&ordenada1, 1);
+        apilar(&ordenada1, 6);
+        apilar(&ordenada1, 9);
+        apilar(&ordenada2, 5);
+        apilar(&ordenada2, 8);
+        apilar(&ordenada2, 13);
+
+        while(!pilavacia(&ordenada1) && !pilavacia(&ordenada2))
+        {
+            if(tope(&ordenada1) >= tope(&ordenada2))
+            {
+                apilar(&aux1, desapilar(&ordenada1));
+            }
+            else
+            {
+                apilar(&aux1, desapilar(&ordenada2));
+            }
+        }
+
+        if(!pilavacia(&ordenada1))
+        {
+            while(!pilavacia(&ordenada1))
+            {
+                apilar(&aux1, desapilar(&ordenada1));
+            }
+        }
+        else if(!pilavacia(&ordenada2))
+        {
+            while(!pilavacia(&ordenada2))
+            {
+                apilar(&aux1, desapilar(&ordenada2));
+            }
+        }
+
+
+        while(!pilavacia(&aux1))
+        {
+            apilar(&ordenadafinal, desapilar(&aux1));
+        }
+
+        mostrar(&ordenadafinal);
 
         break;
 
     case 12:
         //Dada la pila ORIGEN ordenarla en forma ascendente por método de inserción dejando el
         //resultado en la pila ORIGEN. Para este ejercicio usar lo aprendido para el ejercicio 5.
+        apilar(&origen, 5);
+        apilar(&origen, 3);
+        apilar(&origen, 1);
+        apilar(&origen, 2);
+        apilar(&origen, 4);
+
+        while(!pilavacia(&origen))
+        {
+            apilar(&aux1, desapilar(&origen));
+            if(!pilavacia(&origen))
+            {
+                while(!pilavacia(&origen))
+                {
+                    if(tope(&origen) > tope(&aux1))
+                    {
+                        apilar(&mayor, desapilar(&origen));
+                    }
+                    else
+                    {
+                        apilar(&menor, desapilar(&origen));
+                    }
+
+                }
+
+                    if(!pilavacia(&mayor)){
+                        apilar(&mayor, desapilar(&aux1));
+                    }
+                    else if(!pilavacia(&menor) && pilavacia(&mayor)){
+                        apilar(&aux2, desapilar(&aux1));
+                    }
+                    else{
+                        apilar(&menor, desapilar(&aux1));
+                    }
+
+                if(!pilavacia(&menor)){
+                    while(!pilavacia(&menor)){
+                        apilar(&origen, desapilar(&menor));
+                    }
+                }
+
+                if(!pilavacia(&mayor)){
+                    while(!pilavacia(&mayor)){
+                        apilar(&origen, desapilar(&mayor));
+                    }
+                }
+
+                }
+            }
+
+            if(!pilavacia(&aux1)){
+                apilar(&aux2, desapilar(&aux1));
+            }
+
+        mostrar(&aux2);
+
 
         break;
 
