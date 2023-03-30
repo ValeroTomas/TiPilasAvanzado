@@ -25,20 +25,8 @@ int main()
     int punto;
     int var;
     int contador;
+    int flag;
 
-    printf(" ||==================================================================|| \n");
-    printf(" ||(100)================|BANCO CENTRAL ARGENTINA|===============(100)|| \n");
-    printf(" ||\\$//        ~         '-------========--------'               \\$//|| \n");
-    printf(" ||<< /        /$\              // ____ \\                          \ >>|| \n");
-    printf(" ||>>|        //E\\            // ///..) \\              2023       |<<|| \n");
-    printf(" ||<<|        \\A//           || <||  >\  ||                        |>>|| \n");
-    printf(" ||>>|         \$/            ||  $$ -/  ||            EL JOTA     |<<|| \n");
-    printf(" ||<<|       TP PILAS         *\\  |\_/  //*                        |>>|| \n");
-    printf(" ||>>|                         *\\/___\_//*                         |<<|| \n");
-    printf(" ||<<\       AVANZADO     _____/ J PERALES \________    DOBLE T     />>|| \n");
-    printf(" ||//$\                 ~|    REPUBLICA ARGENTINA    |~            /$\\|| \n");
-    printf(" ||(100)==================     CIEN MIL PESITOS   ==============(100)|| \n");
-    printf(" ||==================================================================|| \n");
     printf(" ||==================================================================||\n");
     printf(" ||=Punto-1                         |                       Punto-8 =||\n");
     printf(" ||=Punto-2                         |                       Punto-9 =||\n");
@@ -249,10 +237,79 @@ int main()
         break;
 
     case 7:
+        //Determinar si un elemento buscado está dentro de una pila. Al encontrarlo, finalizar la búsqueda.
+
+        apilar (&dada, 9);
+        apilar (&dada, 8);
+        apilar (&dada, 7);
+        apilar (&dada, 6);
+        apilar (&dada, 5);
+        apilar (&dada, 4);
+        apilar (&dada, 3);
+        apilar (&dada, 2);
+        apilar (&dada, 1);
+        printf("\n\nQue valor buscamos?\n");
+        leer(&a);
+
+        mostrar(&dada);
+        while(!pilavacia(&dada) && tope(&dada) != tope(&a))
+        {
+            apilar(&aux1, desapilar(&dada));
+        }
+        if(tope(&dada) == tope(&a))
+        {
+            printf("\n\nValor encontrado!\n");
+            printf("\n\nTu valor:\n");
+            mostrar(&a);
+        }
+        else
+        {
+            printf("Tu valor no estaba en la pila.");
+            printf("\n\nTu valor:\n");
+            mostrar(&a);
+        }
 
         break;
 
     case 8:
+        //Eliminar un elemento de una pila. El eliminarlo, finalizar el recorrido y dejar el resto en el mismo orden.
+        apilar (&dada, 9);
+        apilar (&dada, 8);
+        apilar (&dada, 7);
+        apilar (&dada, 6);
+        apilar (&dada, 5);
+        apilar (&dada, 4);
+        apilar (&dada, 3);
+        apilar (&dada, 2);
+        apilar (&dada, 1);
+        flag = 0;
+
+        printf("\n\nQue valor buscamos?\n");
+        leer(&a);
+
+        printf("\n\nPILA ORIGINAL");
+        mostrar(&dada);
+
+        while(!pilavacia(&dada))
+        {
+            apilar(&aux1, desapilar(&dada));
+            if(tope(&dada)==tope(&a)){
+                apilar(&aux2, desapilar(&dada));
+                flag = 1;
+            }
+        }
+        while(!pilavacia(&aux1)){
+            apilar(&dada, desapilar(&aux1));
+        }
+
+        if (flag==1){
+            printf("\n\nTu valor estaba en la pila\n");
+        }
+        else{
+            printf("\n\nTu valor NO estaba en la pila");
+        }
+        printf("\n\nPILA FINAL");
+        mostrar(&dada);
 
         break;
 
@@ -307,18 +364,31 @@ int main()
         break;
 
     case 10:
+        //Dadas dos pilas A y B que simulan conjuntos (cada conjunto no tiene elementos repetidos
+        //sobre sí mismo), realizar un programa que calcule en la pila C la operación de unión.
 
         break;
 
     case 11:
+        //Intercalar dos pilas ordenadas en forma creciente (ORDENADA1 y ORDENADA2) dejando
+        //el resultado en una pila también ordenada en forma creciente (ORDENADAFINAL).
 
         break;
 
     case 12:
+        //Dada la pila ORIGEN ordenarla en forma ascendente por método de inserción dejando el
+        //resultado en la pila ORIGEN. Para este ejercicio usar lo aprendido para el ejercicio 5.
 
         break;
 
     case 13:
+        /*Suponer un juego de cartas en el que en cada mano se reparten dos cartas por jugador.
+        Un jugador gana la mano cuando la suma de sus cartas es mayor que las del contrario y
+        al hacerlo coloca todas las cartas (las de él y las de su rival) en su pila de puntos.
+        En caso de empate (y para simplificar) siempre gana el jugador1. Simular la ejecución del
+        juego de tal manera que dada una pila MAZO (con un número de elementos múltiplo de cuatro)
+        distribuya las cartas en las pilas PUNTOSJUG1 y PUNTOSJUG2 como si estos hubieran jugado.
+        Utilizar las pilas auxiliares que crea conveniente.*/
 
         break;
 
